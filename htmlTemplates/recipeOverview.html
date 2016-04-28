@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Zeige Rezepte</title>
+</head>
+<body>
+<h1>Rezept Übersicht</h1>
+<table>
+<tr>
+<th>Name</th>
+<th>Zutaten</th>
+</tr>
+
+{% for recipe in recipes %}
+	<tr>
+	<td>{{ recipe.name }}</td>
+	<td>
+	{% for ingredient in recipe.ingredients.all %}
+		{{ ingredient.name }}, {{ ingredient.quantity }} <br>
+	{% endfor %}
+	<td>
+	</tr>
+{% endfor %}
+
+</table>
+
+
+</body>
+</html>
