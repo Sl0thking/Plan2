@@ -15,10 +15,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from mysite.views import hello, showRecipes
+import mysite.views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', hello),
-    url(r'^showRecipes/$', showRecipes),
+    url(r'^hello/$', mysite.views.hello),
+    url(r'^showRecipes/$', mysite.views.showRecipes),
+    url(r'^addReceipe/$', mysite.views.showRecipeForm),
+    url(r'^recipe_add/$', mysite.views.addRecipe),
 ]

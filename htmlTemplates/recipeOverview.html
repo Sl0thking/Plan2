@@ -15,7 +15,13 @@
 	<td>{{ recipe.name }}</td>
 	<td>
 	{% for ingredient in recipe.ingredients.all %}
-		{{ ingredient.name }}, {{ ingredient.quantity }} <br>
+		{{ ingredient.name }} 
+		{% if  ingredient.quantityInMl != NONE %}
+			{{ ingredient.quantityInMl }} ml <br>
+		{% else %}
+			{{ ingredient.quantityInMg }} mg <br>
+		{% endif %}
+		
 	{% endfor %}
 	<td>
 	</tr>

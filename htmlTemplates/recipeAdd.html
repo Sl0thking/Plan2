@@ -1,0 +1,18 @@
+<html>
+<head>
+<title>Füge Rezepte hinzu</title>
+</head>
+<body>
+<h1>Rezept Form</h1>
+<form action="/recipe_add/" method="post">
+	{% csrf_token %}
+	<table>
+	{{ form }}
+	</table>
+	<input type="submit" value="Add"/>
+	{% for ingredient in ingredients %}
+
+	{% endfor %}
+</form>
+</body>
+</html>
