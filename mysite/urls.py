@@ -21,6 +21,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/$', mysite.views.hello),
     url(r'^showRecipes/$', mysite.views.showRecipes),
-    url(r'^addReceipe/$', mysite.views.showRecipeForm),
+    url(r'^addRecipe/$', mysite.views.showRecipeForm),
     url(r'^recipe_add/$', mysite.views.addRecipe),
 ]
