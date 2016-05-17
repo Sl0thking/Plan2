@@ -16,18 +16,31 @@ $(document).ready(function() {
 <a href="/addRecipe">Füge Rezept hinzu</a>
 <h1>Rezept Details</h1>
 
-
-
-
 <form action="/recipe_add/" method="post">
 	{% csrf_token %}
 	<table>
 	{{ form }}
 	</table>
+<ul>	
+{% for ingredient in recipe.ingredients.all %}
+		<li>{{ ingredient.name }} 
+		{% if  ingredient.quantityInMl != NONE %}
+			{{ ingredient.quantityInMl }} ml 
+		{% else %}
+			{{ ingredient.quantityInMg }} mg 
+		{% endif %}
+		</li><a href="/delIngredient/?ingreId={{ ingredient.id }}&recId={{recipe.id}}">Remove</a>
+{% endfor %}
+</ul>
 
+</form>
+<form action="/addIngredient/?recId={{ recipe.id }}" method="post">
+	{% csrf_token %}
 	<table>
 	{{ ingredientForm }}
 	</table>
+	<input type="submit">
 </form>
+
 </body>
 </html>

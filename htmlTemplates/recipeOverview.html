@@ -6,31 +6,10 @@
 <a href="/showRecipes">Zeige Rezepte</a>
 <a href="/addRecipe">Füge Rezept hinzu</a>
 <h1>Rezept Übersicht</h1>
-<table>
-<tr>
-<th>Name</th>
-<th>Zutaten</th>
-</tr>
-
+<ul>
 {% for recipe in recipes %}
-	<tr>
-	<td>{{ recipe.name }}</td>
-	<td>
-	{% for ingredient in recipe.ingredients.all %}
-		{{ ingredient.name }} 
-		{% if  ingredient.quantityInMl != NONE %}
-			{{ ingredient.quantityInMl }} ml <br>
-		{% else %}
-			{{ ingredient.quantityInMg }} mg <br>
-		{% endif %}
-		
-	{% endfor %}
-	<td>
-	</tr>
+	<li>{{ recipe.name }} <a href="/recipeDetails/?id={{recipe.id}}">Edit</a> <a href="/delRecipe/?recId={{recipe.id}}">Remove</a></li>
 {% endfor %}
-
-</table>
-
-
+</ul>
 </body>
 </html>

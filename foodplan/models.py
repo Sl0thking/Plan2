@@ -6,6 +6,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=60)
     quantityInMl = models.IntegerField(null=True)
     quantityInMg = models.IntegerField(null=True)
+    quantityInNr = models.IntegerField(null=True)
     
     def __str__(self):
         return name

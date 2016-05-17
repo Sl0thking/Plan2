@@ -23,4 +23,8 @@ urlpatterns = [
     url(r'^showRecipes/$', mysite.views.showRecipes),
     url(r'^addRecipe/$', mysite.views.showRecipeForm),
     url(r'^recipe_add/$', mysite.views.addRecipe),
+    url(r'^recipeDetails/$', mysite.views.showRecipeDetails),
+    url(r'^addIngredient/$', mysite.views.addIngredient),
+    url(r'^delIngredient/$', mysite.views.delIngredient),
+    url(r'^delRecipe/$', mysite.views.delRecipe),
 ]
