@@ -1,23 +1,33 @@
 <html>
 <head>
-<title>Füge Rezepte hinzu</title>
+<title>Rezepte details</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
+$(document).ready(function() {
+	$("input[name='name']").attr("disabled", "disabled");
+	$("textarea[name='desc']").attr("disabled", "disabled");
+});
+
 
 </script>
 </head>
 <body>
 <a href="/showRecipes">Zeige Rezepte</a>
 <a href="/addRecipe">Füge Rezept hinzu</a>
-<h1>Rezept Form</h1>
+<h1>Rezept Details</h1>
+
+
+
 
 <form action="/recipe_add/" method="post">
 	{% csrf_token %}
 	<table>
 	{{ form }}
 	</table>
-	<input value="Hinzufügen" type="submit"/>
 
+	<table>
+	{{ ingredientForm }}
+	</table>
 </form>
 </body>
 </html>

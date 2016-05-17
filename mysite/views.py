@@ -39,33 +39,17 @@ def showRecipes(request):
 def showRecipeForm(request):
     form = recipeForm(request.POST)
     return render(request, 'recipeAdd.html', {'form': form})
-
+    
+def showRecipeDetails(request):
+    rec = Recipe()
+    rec.
+    return render(request, '')
+    
 def addRecipe(request):
     rec = Recipe()
+    form = recipeForm(request.POST)
+    ingredientForm = ingredientForm(request.POST)
     rec.name = request.POST['name']
     rec.description = request.POST['desc']
     rec.save()
-    prog = re.compile('.{1,}\d$')
-    postIngredientMap = {}
-    for key in request.POST.keys():
-        if prog.match(key):
-            if not key[-1] in postIngredientMap:
-                postIngredientMap[key[-1]] = {key[0:len(key)-1] : request.POST[key]}
-            else:
-                postIngredientMap[key[-1]][key[0:len(key)-1]] = request.POST[key]  
-            
-    for ingredientMap in postIngredientMap.values():
-        ingredient = Ingredient()
-        ingredient.name = ingredientMap['ingredient']
-        ingredient.quantityInMl = ingredientMap['quantityMl']
-        ingredient.quantityInMg = ingredientMap['quantityMg']
-        
-        if ingredient.quantityInMl == '':
-            ingredient.quantityInMl = 0
-        if ingredient.quantityInMg == '':
-            ingredient.quantityInMg = 0
-        
-        ingredient.save()
-        rec.ingredients.add(ingredient)
-    rec.save()
-    return HttpResponseRedirect("/showRecipes/")
+    return HttpResponseRedirect("recipeDetails.html?rip=" + rec.id)
